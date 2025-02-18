@@ -15,6 +15,6 @@ release: main.c
 
 clean:
 	rm $(EXE)
-	rm test*
+	rm test
 
 .PHONY: build dev release clean all

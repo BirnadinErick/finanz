@@ -32,7 +32,7 @@ int main(void)
     */
 
     Money m;
-    char m_str[] = "3,14";
+    char m_str[] = "33,14";
     switch (create_money(m_str, &m))
     {
     case OK:
