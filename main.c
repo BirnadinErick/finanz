@@ -30,18 +30,20 @@ int main(void)
             - calc holding
 
     */
+    /*
+     1. init ledger
+     2. add records
+     3. print the ledger
+    */
+    Ledger l;
+    init_ledger(&l, "test", "948,00");
+    add_record(&l, "rent", "360,00", SPENT);
+    add_record(&l, "krankenversicherung", "139,41", SPENT);
+    add_record(&l, "lebensmittel", "130,27", SPENT);
+    add_record(&l, "minijob", "94,34", INCOME);
 
-    Money m;
-    char m_str[] = "33,14";
-    switch (create_money(m_str, &m))
-    {
-    case OK:
-        print_moneyval(&m);
-        puts("");
-        exit(EXIT_SUCCESS);
+    print_ledger(&l);
 
-    default:
-        perror("failed to create money");
-        exit(EXIT_FAILURE);
-    }
+    free_ledger(&l);
+    exit(EXIT_SUCCESS);
 }

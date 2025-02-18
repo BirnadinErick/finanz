@@ -1,5 +1,6 @@
 CC = gcc
-CC_FLAGS = -Wall -Wpedantic -Werror
+LIBS = -lm
+CC_FLAGS = -Wall -Wpedantic -Werror $(LIBS)
 EXE = finanz
 
 all: dev
@@ -13,8 +14,13 @@ dev: build
 release: main.c 
 	$(CC) $(CC_FLAGS) -o $(EXE) main.c -O2
 
+test: core.c tests/*
+	$(CC) $(CC_FLAGS) -o test tests/tests_main.c -g
+	@./test
+
+
 clean:
 	rm $(EXE)
 	rm test
 
-.PHONY: build dev release clean all
+.PHONY: build dev release clean all test
